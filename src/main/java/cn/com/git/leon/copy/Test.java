@@ -19,5 +19,6 @@ public class Test {
         Man woman = new Man(man);
         woman.getName().setFirstName("王");
         System.out.println(man);
+        System.out.println(man == woman);
     }
 }
