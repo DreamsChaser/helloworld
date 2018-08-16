@@ -1,0 +1,64 @@
+byte    short  int  long  float  double  char  boolean
+1(8bit) 2      4    8     4      8       2     1/8(1bit)
+
+
+寄存器、堆栈（基本类型）、堆（其它类型）、常量存储、非RAM存储
+
+
+String 
+StringBuffer 
+StringBuilder
+三者都是final修饰的类，底层都是字符数组实现，String底层的字符数组是final
+StringBuffer是jdk1.0引入的，线程安全的 toString缓存
+StringBulider是jdk1.5引入的，线程不安全的 toString返回新对象
+
+
+
+List有序（插入数据顺序）数据可以重复，可以插入null
+ArrayList Vector
+底层是数组实现，直接按序号索引元素，查询速度快而插入元素涉及数组元素移动等内存操作，所以插入数据慢，超过容量扩容 vector默认两倍 arraylist默认1.5倍
+ArrayList不同步，线程不安全。
+Vector同步，线程安全
+
+LinkedList使用双向链表实现存储，也是非线程安全
+
+
+Map 
+每一个实体都含有键和值两个对象
+
+hashtable 线程安全 不允许键和值为空                  无序（降序）
+
+hashmap 非线程安全 键可以允许有一个空，值可以多个空  无序（按照Key的Ascii升序）
+ 
+treemap 非线程安全 键不允许为空 值可以有多个空       无序（按照Key的Ascii升序）
+
+linkedhashmap 有序 
+
+ConcurrentHashMap
+map 键值对			HashTable      		HashMap      TreeMap     	LinkedHashMap     ConcurrentHashMap
+默认排序		 	降序		   		升序         升序        	插入顺序          升序
+是否线程安全		线程安全	   		非            非         	非线程安全        线程安全
+允许空值            键值都不允许为空				 不允许key为空					  都不允许为空
+
+
+
+
+类的加载
+加载
+连接
+解析
+初始化
+父类静态变量 父类静态代码块 子类静态变量 子类静态代码块 父类非静态变量 父类构造代码块 父类构造方法  子类。。。
+
+字符流有缓冲区（close或者flush之后才会输出到文件中） 字节流没有
+
+运行时异常
+Java.lang.IndexOutOfBoundsException
+Java.lang.NullPointerException
+Java.lang.ArithmeticException
+illegalArgumentException
+
+
+
+
+
