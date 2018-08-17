@@ -49,8 +49,35 @@ map 键值对			HashTable      		HashMap      TreeMap     	LinkedHashMap     Con
 解析
 初始化
 父类静态变量 父类静态代码块 子类静态变量 子类静态代码块 父类非静态变量 父类构造代码块 父类构造方法  子类。。。
+1.检测此Class 是否被载入过（即在缓存区中是否由此 Class），有，则进入第8步，否则执行第2步。
+
+2.如果父类加载器不存在（要么parent 一定是根类加载器，要么本身就是根类加载器），则跳到第4步；如果父类加载器存在，则执行第3步。
+
+3.请求使用父类加载器去载入目标类，如果成功则跳到第8步，否则执行第5步
+
+4.请求使用 根类加载器 载入目标类，成功则跳到第8步，否则跳到第7步
+
+5.当前类加载器 尝试寻找 Class文件（从与此ClassLoader相关的类路径中寻找），如果找到则执行第6步，否则跳到第7步。
+
+6.从文件中载入Class，成功后跳到第8步。
+
+7.抛出ClassNotFoundException异常。
+
+8.返回对应的 java.lang.Class对象。
+
+其中 第5,6步允许重写ClassLoader的findClass()方法来实现自己的载入策略，甚至重写loadClass()方法来实现自己 的载入过程
+
+
 
 字符流有缓冲区（close或者flush之后才会输出到文件中） 字节流没有
+NIO 同步的核心是Selector 非阻塞的核心是通道Channel和缓冲器Buffer
+Selector允许单线程处理多个 Channel
+可以从Buffer 写到Channel中 ，也以从Channel读到Buffer中
+非阻塞的实现：reactor（反应器）模式
+采用基于事件驱动的设计，当有事件触发时，才会调用处理器进行数据处理。
+Reactor：负责响应IO事件，当检测到一个新的事件，将其发送给相应的Handler去处理。
+Handler：负责处理非阻塞的行为，标识系统管理的资源；同时将handler与事件绑定。
+
 
 运行时异常
 Java.lang.IndexOutOfBoundsException
@@ -58,7 +85,12 @@ Java.lang.NullPointerException
 Java.lang.ArithmeticException
 illegalArgumentException
 
+反射
+当类被加载后，会产生一个Class对象包含了 field method construct等一些属性
+Class.forName 和 ClassLoader的创建类示例的区别。前者在加载类的时候会有连接过程即初始化static代码块和static变量。
+newInstance: 弱类型。低效率。只能调用无参构造。
+new: 强类型。相对高效。能调用任何public构造。
 
-
-
-
+能否定义java.lang.String被加载?
+类加载器有四种 bootStrapClassLoader加载jre/lib/rt.jar  extensionClassLoader jre/lib/ext/*.jar  app ClassLoader 加载本地class customer 加载自定义classLoad生成的class
+不能，java加载是采用父亲委托机制。在bootStrapClassLoader加载jre这步已经加载到了String 所以不会在继续记载

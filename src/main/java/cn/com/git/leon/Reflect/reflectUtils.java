@@ -49,7 +49,19 @@ public class reflectUtils {
             person1.speak();
             /**
              * new 和 new instance
+             * newInstance: 弱类型。低效率。只能调用无参构造。
+             * new: 强类型。相对高效。能调用任何public构造。
              */
+            /**
+             * Class.forName和ClassLoader的区别
+             */
+
+            Class clazz4 = Class.forName(Man.class.getName());
+            Man man = (Man)clazz4.newInstance();
+            man.show();
+            Class clazz5 = Man.class.getClassLoader().loadClass(Man.class.getName());
+            Man man2 = (Man)clazz5.newInstance();
+            man2.show();
         } catch (Exception e) {
             e.printStackTrace();
         }

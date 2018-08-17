@@ -38,7 +38,7 @@ public class Test2 {
             System.out.println(new Date());
             FileOutputStream fileOutputStream3 = new FileOutputStream("D:\\writeFile.txt");
             FileChannel fileChannel = fileOutputStream3.getChannel();
-            ByteBuffer byteBuffer = ByteBuffer.allocate(48);
+            ByteBuffer byteBuffer = ByteBuffer.allocate(stringBuffer.toString().getBytes().length);
             byteBuffer.put(stringBuffer.toString().getBytes());
             byteBuffer.flip();
             fileChannel.write(byteBuffer);
@@ -47,7 +47,7 @@ public class Test2 {
             System.out.println(new Date());
             FileOutputStream fileOutputStream4 = new FileOutputStream("D:\\writeFile2.txt");
             FileChannel fileChannel2 = fileOutputStream4.getChannel();
-            ByteBuffer byteBuffer2 = ByteBuffer.allocate(48);
+            ByteBuffer byteBuffer2 = ByteBuffer.allocate(stringBuffer.toString().getBytes().length);
             byteBuffer2.put(stringBuffer.toString().getBytes());
             byteBuffer2.flip();
             fileChannel2.write(byteBuffer);
