@@ -40,7 +40,8 @@ map 键值对			HashTable      		HashMap      TreeMap     	LinkedHashMap     Con
 是否线程安全		线程安全	   		非            非         	非线程安全        线程安全
 允许空值            键值都不允许为空				 不允许key为空					  都不允许为空
 
-
+set不包含重复元素
+HashSet  TreeSet
 
 
 类的加载
@@ -94,3 +95,6 @@ new: 强类型。相对高效。能调用任何public构造。
 能否定义java.lang.String被加载?
 类加载器有四种 bootStrapClassLoader加载jre/lib/rt.jar  extensionClassLoader jre/lib/ext/*.jar  app ClassLoader 加载本地class customer 加载自定义classLoad生成的class
 不能，java加载是采用父亲委托机制。在bootStrapClassLoader加载jre这步已经加载到了String 所以不会在继续记载
+
+hashcode and equals
+equals相等两个对象，则hashcode一定要相等。但是hashcode相等的两个对象不一定equals相等。
