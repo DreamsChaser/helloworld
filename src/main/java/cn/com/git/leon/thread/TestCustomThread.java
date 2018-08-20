@@ -11,5 +11,6 @@ public class TestCustomThread {
         Thread thread = new Thread(customThread,"线程1");
         //就绪状态 ready
         thread.start();
+        //
     }
 }
