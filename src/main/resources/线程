@@ -12,3 +12,13 @@
 3）使用Callable和Future创建线程  通过调用线程对象的start()方法来启动线程
 
 线程的生命周期：新建（New）、就绪（Runnable）、运行（Running）、阻塞（Blocked）和死亡（Dead）5种状态。
+
+1、新建状态(new)：new Thread()
+2、线程位于可运行线程池中，等待线程调度，获取cpu使用权(ready):
+   thread.start()或者thread.yield();
+3、获取到cpu时间片变成运行状态(running)
+4、阻塞状态 blocked:
+    在synchronized中wait()
+    Thread.sleep(); thread.join()
+wait与notify线程获取锁后 wait()释放锁进入 同步队列，别的线程获取cpu调度执行notify后唤醒该线程，重新争夺cpu调度
+join 在A线程中调用B的join()相当于A线程调用B的wait进入阻塞，B执行完后自行notify唤醒A
