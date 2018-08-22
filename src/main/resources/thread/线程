@@ -22,3 +22,13 @@
     Thread.sleep(); thread.join()
 wait与notify线程获取锁后 wait()释放锁进入 同步队列，别的线程获取cpu调度执行notify后唤醒该线程，重新争夺cpu调度
 join 在A线程中调用B的join()相当于A线程调用B的wait进入阻塞，B执行完后自行notify唤醒A
+!!!!!yield方法不能用于交替执行线程
+
+
+并发程序正确地执行，必须要保证原子性、可见性以及有序性
+线程安全的实现
+1、同步和锁
+2、使用原子类
+3、volatile
+4、线程安全类和不变类
+
