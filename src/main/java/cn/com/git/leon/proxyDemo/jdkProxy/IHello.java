@@ -1,4 +1,4 @@
-package cn.com.git.leon.proxyDemo;
+package cn.com.git.leon.proxyDemo.jdkProxy;
 
 /**
  * @author sirius

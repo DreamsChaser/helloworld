@@ -1,4 +1,4 @@
-package cn.com.git.leon.proxyDemo;
+package cn.com.git.leon.proxyDemo.jdkProxy;
 
 /**
  * Created by wangDi on 2018/8/22.

@@ -1,4 +1,4 @@
-package cn.com.git.leon.proxyDemo;
+package cn.com.git.leon.proxyDemo.jdkProxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
