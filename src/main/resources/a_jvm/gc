@@ -1,0 +1,10 @@
+分代收集
+将堆中对象划分为 年轻代 老年代和永久代
+年轻代有一个eden区和两个survivor区，默认8:1
+
+新创建的对象都会被分配到Eden区,Eden区满后进行第一次Minor GC
+GC后会将eden区的存活的对象存放在from survivor区中
+等待下一次minor gc时会将eden区的存活对象和from survivor 放入to survivor中
+之后 from survivor 和to survivor 角色互换。等待下一次gc
+而在survivor移动过程达到一定次数（-XX:MaxTenuringThreshold）后进入老年区
+老年区满后执行full gc
