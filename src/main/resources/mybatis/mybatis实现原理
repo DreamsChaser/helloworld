@@ -1,0 +1,4 @@
+每一个Mybatis的应用程序都以一个SqlSessionFactory对象的实例为核心。
+首先用字节流通过Resource将配置文件读入，然后通过SqlSessionFactoryBuilder().build方法创建SqlSessionFactory，
+然后再通过SqlSessionFactory.openSession()方法创建一个SqlSession为每一个数据库事务服务。
+经历了Mybatis初始化 –>创建SqlSession –>运行SQL语句，返回结果三个过程
