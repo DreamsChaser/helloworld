@@ -1,0 +1,21 @@
+加载
+    找到需要加载的类并把类的信息加载到jvm的方法区中，然后在堆区中实例化一个java.lang.Class对象
+连接
+    验证：确保被加载的类的正确性
+    准备：为类的静态变量分配内存并设为jvm默认的初值
+    解析：把类中的符号引用转换为直接引用，jvm会将 所有的类或接口名、字段名、方法名转换为具体的内存地址。
+初始化：读取或设置类的静态变量、调用类的静态方法
+（主动使用时才初始化
+    创建类的实例
+    访问某个类或接口的静态变量，或者对该静态 变量赋值
+    调用类的静态方法
+    反射（如 Class.forName(“com.shengsiyuan.Test”) ）
+    初始化一个类的子类
+    Java虚拟机启动时被标明为启动类的类（Java Test）
+）
+Class.forName 和 ClassLoader的区别：（见jdbc加载驱动)
+调用ClassLoader类的loadClass方法加载 一个类，并不是对类的主动使用，不会导 致类的初始化
+加载机制：父类委托机制
+类加载器有四种 bootStrap加载jre/lib/下的核心类库  extension jre/lib/ext/*.jar
+               System 加载本地class customer 加载自定义加载器
+
