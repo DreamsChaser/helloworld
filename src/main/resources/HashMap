@@ -1,0 +1,28 @@
+底层是数组+链表+红黑树
+    静态内部类node
+    final int hash //用来定位数组索引位置
+    final K key
+    V value
+    Node<K,V> next  //链表的下一个node
+hashmap
+    Node[] table哈希桶数组 Node是个键值对
+    int threshold;所能容纳的key-value对极限 threshold = length(node数组长度) * Load factor 超过这个数目就重新resize
+    final float loadFactor;    // 负载因子
+    int modCount; 而modCount字段主要用来记录HashMap内部结构发生变化的次数(key不变value变则不属于结构变化)
+    int size; HashMap中实际存在的键值对数量
+
+    //确定哈希桶数组索引位置
+    int hash(Object key){
+         int h;
+         return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);(右移16位然后异或)
+    }
+
+    //put
+    1.判断键值对数组table[i]是否为空或为null，否则执行resize()进行扩容；
+    ②.根据键值key计算hash值得到插入的数组索引i，如果table[i]==null，直接新建节点添加，转向⑥，如果table[i]不为空，转向③；
+    ③.判断table[i]的首个元素是否和key一样，如果相同直接覆盖value，否则转向④，这里的相同指的是hashCode以及equals；
+    ④.判断table[i] 是否为treeNode，即table[i] 是否是红黑树，如果是红黑树，则直接在树中插入键值对，否则转向⑤；
+    ⑤.遍历table[i]，判断链表长度是否大于8，大于8的话把链表转换为红黑树，在红黑树中执行插入操作，否则进行链表的插入操作；遍历过程中若发现key已经存在直接覆盖value即可；
+    ⑥.插入成功后，判断实际存在的键值对数量size是否超多了最大容量threshold，如果超过，进行扩容。
+
+    //resize
