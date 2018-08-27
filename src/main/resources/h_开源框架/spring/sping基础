@@ -1,6 +1,6 @@
 spring三个核心组件core bean context 最核心的是bean
 
-spring ioc加载流程
+h_开源框架.spring ioc加载流程
 主要是abstractApplicationContext中的refresh方法
 1、prepareRefresh()记录下容器的启动时间、标记“已启动”状态、处理配置文件中的占位符
 2、obtainFreshBeanFactory()创建beanFactory然后将bean保存在beanFactory中的 beanDefinitionMap中
