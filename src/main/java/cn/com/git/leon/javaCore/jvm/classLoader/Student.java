@@ -11,6 +11,8 @@ public class Student {
     static int a = 10;
     static int b = 20;
 
+    int c;
+
     static {
         System.out.println("静态代码块");
         System.out.println(b);

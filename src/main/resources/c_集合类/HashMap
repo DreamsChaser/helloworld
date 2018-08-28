@@ -11,11 +11,14 @@ hashmap
     int modCount; 而modCount字段主要用来记录HashMap内部结构发生变化的次数(key不变value变则不属于结构变化)
     int size; HashMap中实际存在的键值对数量
 
-    //确定哈希桶数组索引位置
+    //确定哈希桶数组索引位置,扰动函数
     int hash(Object key){
          int h;
          return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);(右移16位然后异或)
     }
+    key的hashCode值返回int型是个-2^31 2^31的，一般情况下很少发生碰撞，对数组长度取模，h&(length-1) 长度选2次幂这样是个低位掩码，每次取后几位，但这样碰撞会很严重
+    int32bit 右移16位 高8位低8位异或 保证hash碰撞
+
 
     //put
     1.判断键值对数组table[i]是否为空或为null，否则执行resize()进行扩容；
