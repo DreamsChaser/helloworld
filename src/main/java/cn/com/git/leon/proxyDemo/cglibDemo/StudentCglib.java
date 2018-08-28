@@ -24,6 +24,15 @@ public class StudentCglib implements MethodInterceptor{
         return enhancer.create();
     }
 
+    public Object getInstance(Class clazz){
+        Enhancer enhancer = new Enhancer();
+        //设置父类对象
+        enhancer.setSuperclass(clazz);
+        //回调方法
+        enhancer.setCallback(this);
+        return enhancer.create();
+    }
+
     public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
         System.out.println("方法开始前");
         methodProxy.invokeSuper(o,objects);
