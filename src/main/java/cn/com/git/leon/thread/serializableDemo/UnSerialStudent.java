@@ -1,12 +1,10 @@
-package cn.com.git.leon.serializableDemo;
-
-import java.io.Serializable;
+package cn.com.git.leon.thread.serializableDemo;
 
 /**
  * @author sirius
  * @since 2018/8/27
  */
-public class SerializableStudent implements Serializable{
+public class UnSerialStudent {
 
     private String name;
 
@@ -26,9 +24,5 @@ public class SerializableStudent implements Serializable{
 
     public void setAge(int age) {
         this.age = age;
-    }
-
-    public void say(){
-        System.out.println("name = "+name+",age = " +age);
     }
 }

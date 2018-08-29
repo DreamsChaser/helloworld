@@ -1,4 +1,4 @@
-package cn.com.git.leon.serializableDemo;
+package cn.com.git.leon.thread.serializableDemo;
 
 import java.io.*;
 

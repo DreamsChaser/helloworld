@@ -15,7 +15,7 @@ public class LockTest implements Runnable{
 
         System.out.println(Thread.currentThread().getName()+":"+"获得锁");
         try {
-            Thread.sleep(1000);
+            Thread.sleep(10000);
             for (int i = 0; i < 2; i++) {
                 System.out.println(i);
             }
