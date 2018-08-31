@@ -21,7 +21,7 @@
     在synchronized中wait()
     Thread.sleep(); thread.join()
 wait与notify线程获取锁后 wait()释放锁进入 同步队列，别的线程获取cpu调度执行notify后唤醒该线程，重新争夺cpu调度
-join 在A线程中调用B的join()相当于A线程调用B的wait进入阻塞，B执行完后自行notify唤醒A
+join 在A线程中调用B的join() 将A线程阻塞，等B执行完后在唤醒A
 !!!!!yield方法不能用于交替执行线程
 
 

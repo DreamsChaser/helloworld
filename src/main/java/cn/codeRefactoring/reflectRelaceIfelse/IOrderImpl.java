@@ -21,7 +21,7 @@ public class IOrderImpl implements IOrder{
     public void doOrder(String type) {
         String methodName = methodMap.get(type);
         try {
-            Method method = IOrderImpl.class.getMethod(methodName);
+            Method method = this.getClass().getMethod(methodName);
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         }

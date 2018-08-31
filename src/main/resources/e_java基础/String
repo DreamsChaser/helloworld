@@ -1,0 +1,10 @@
+1、String str = "a" + "b" 字符串常量池只会有ab 其它情况是springBuilder.append()
+2、String和 new String
+String str = "test"会去字符串常量池中寻找test是否存在,存在则返回test地址。
+不存在则先去堆中创建一个对象，然后在在字符串常量池中创建"test"，地址复制给他
+new String也会去常量池中寻找test是否存在，不存在则会在字符串常量池创建
+不管存不存在都会在堆区new 一个String对象
+3、String StringBuilder StringBuffer
+这三个类都是final修饰的 不能被继承
+String底层的字符数组也是final修饰 修改字符串实则创建新对象
+StringBuffer线程安全

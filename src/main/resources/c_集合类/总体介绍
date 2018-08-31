@@ -22,9 +22,9 @@ set不包含重复元素
     线程不安全    线程不安全
     无序          可以设置顺序
 
-
-
-
 如果两个对象相同，那么两个对象的hashcode也必须相同
-覆盖equals方法时总要覆盖hashcode方法
+否则我要map操作的时候 map存放的位置是根据对象的hashCode值来确定下标的，如果覆盖equals没有覆盖hashCode
+那么同一个对象会在map中存放两个
+所以覆盖equals方法时总要覆盖hashcode方法
 
+hashmap死循环的问题

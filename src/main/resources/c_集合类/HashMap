@@ -18,6 +18,8 @@ hashmap
     }
     key的hashCode值返回int型是个-2^31 2^31的，一般情况下很少发生碰撞，对数组长度取模，h&(length-1) 长度选2次幂这样是个低位掩码，每次取后几位，但这样碰撞会很严重
     int32bit 右移16位 高8位低8位异或 保证hash碰撞
+    取模算法：hash&(length-1)
+    rehash链表反转
 
 
     //put

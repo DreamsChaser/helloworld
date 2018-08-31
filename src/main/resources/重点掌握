@@ -1,29 +1,29 @@
-微服务
-微服务 (Microservices) 是一种软件架构风格，它是以专注于单一责任与功能的小型功能区块 (Small Building Blocks) 为基础，利用模组化的方式组合出复杂的大型应用程序
-微服务是一种以业务功能为主的服务设计概念，每一个服务都具有自主运行的业务功能
-io
-事务传播特性的基本含义
-反射去除分支结构
-Map去除if条件表达式
-多态取代条件表达式
-sql排序重复
-newCountlond
-四种引用
 原子类
-反射原理
-
-微服务
-微服务 (Microservices) 是一种软件架构风格，它是以专注于单一责任与功能的小型功能区块 (Small Building Blocks) 为基础，利用模组化的方式组合出复杂的大型应用程序
-微服务是一种以业务功能为主的服务设计概念，每一个服务都具有自主运行的业务功能
-io
-
-反射去除分支结构
-Map去除if条件表达式
-多态取代条件表达式
-
-newCountlond
-四种引用
-gc对象
-原子类
-join
 cas算法内部实现
+Spring的依赖注入是怎么实现的
+熟悉HashMap吗？是线程安全的吗？多线程访问有什么问题？仔细说一下
+自动拆箱和装箱
+string str == str1 +str2
+
+读写锁的Condition对象是干什么用的
+CMS，还问我ConcurrentModify错误啥的
+
+AQS源码，Unsafe的park()方法是干什么？
+被不同的类加载器加载出来的对象的Class对象 == 操作，返回结果是什么？
+锁的粗化过程
+8、间隙锁
+
+9、MySQL存储引擎
+
+10、Spring组件用过那些
+
+11、Spring注解如何实现的
+
+12、BeanFactory是什么
+
+13、Bean在加载的时候的流程
+
+14、FactoryBean是什么？
+
+15、BeanFactory有什么实现类
+8、间隙锁
