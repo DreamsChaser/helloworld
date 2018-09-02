@@ -7,7 +7,12 @@ package cn.com.git.leon.javaCore.duotaiDemo;
 public class Test {
 
     public static void main(String[] args) {
-        new Son().publicMethod();
-        new GrandSon().publicMethod();
+        Father father = new Son();
+        father.publicMethod();
+        Father father1 = new GrandSon();
+        father1.publicMethod();
+        father.abstractMethod();
+        Father father2 = new Son2();
+        father2.publicMethod();
     }
 }
