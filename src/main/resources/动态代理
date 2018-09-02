@@ -25,3 +25,4 @@ cglib动态代理
 当执行代理对象的方法时，会首先判断一下是否存在实现了MethodInterceptor
 Enhancer生成代理类
 FastClass机制就是对一个类的方法建立索引，通过索引来直接调用相应的方法
+不能代理final类和final方法

@@ -1,29 +1,15 @@
 原子类
 cas算法内部实现
 Spring的依赖注入是怎么实现的
-熟悉HashMap吗？是线程安全的吗？多线程访问有什么问题？仔细说一下
-自动拆箱和装箱
-string str == str1 +str2
-
-读写锁的Condition对象是干什么用的
-CMS，还问我ConcurrentModify错误啥的
-
 AQS源码，Unsafe的park()方法是干什么？
-被不同的类加载器加载出来的对象的Class对象 == 操作，返回结果是什么？
-锁的粗化过程
-8、间隙锁
-
-9、MySQL存储引擎
-
 10、Spring组件用过那些
-
 11、Spring注解如何实现的
-
 12、BeanFactory是什么
-
 13、Bean在加载的时候的流程
-
 14、FactoryBean是什么？
-
 15、BeanFactory有什么实现类
 8、间隙锁
+
+注解的方式读取bean
+spring mvc
+mybatis

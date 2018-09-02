@@ -1,14 +1,14 @@
-package cn.com.git.leon.proxyDemo.jdkProxy;
+package cn.com.git.leon.spring.aopDemo;
 
 /**
- * Created by wangDi on 2018/8/22.
+ * @author sirius
  */
-public class Hello implements IHello{
+public class Student {
 
     private String name;
 
-    public final void sayHello() {
-        System.out.println("你好"+name);
+    public void say(){
+        System.out.println("hello,I'm " + name);
     }
 
     public String getName() {
@@ -19,13 +19,9 @@ public class Hello implements IHello{
         this.name = name;
     }
 
-    public Hello(String name) {
-        this.name = name;
-    }
-
     @Override
     public String toString() {
-        return "Hello{" +
+        return "Student{" +
                 "name='" + name + '\'' +
                 '}';
     }
@@ -35,9 +31,9 @@ public class Hello implements IHello{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Hello hello = (Hello) o;
+        Student student = (Student) o;
 
-        return name != null ? name.equals(hello.name) : hello.name == null;
+        return name != null ? name.equals(student.name) : student.name == null;
     }
 
     @Override

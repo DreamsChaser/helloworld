@@ -1,0 +1,4 @@
+Condition中，用await()替换wait()，用signal()替换notify()，用signalAll()替换notifyAll()
+
+Condition的强大之处在于它可以为多个线程间建立不同的Condition， 使用synchronized/wait()只有一个阻塞队列，notifyAll会唤起所有阻塞队列下的线程，而使用lock/condition，可以实现多个阻塞队列，signalAll只会唤起某个阻塞队列下的阻塞线程。
+

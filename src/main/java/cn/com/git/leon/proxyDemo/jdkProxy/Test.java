@@ -7,7 +7,7 @@ import java.lang.reflect.Proxy;
  */
 public class Test {
     public static void main(String[] args) {
-        IHello hello = new Hello();
+        IHello hello = new Hello("张三");
         MyProxy myProxy = new MyProxy(hello);
         IHello helloProxy = (IHello) Proxy.newProxyInstance(hello.getClass().getClassLoader(),
                 hello.getClass().getInterfaces(), myProxy);

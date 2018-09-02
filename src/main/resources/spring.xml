@@ -4,17 +4,17 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="cn.com.git.leon.spring.springLifeStyle"/>
+    <!--<context:component-scan base-package="cn.com.git.leon.spring"/>-->
 
-    <bean id="student" class="cn.com.git.leon.spring.Student">
+    <bean id="student" class="cn.com.git.leon.spring.aopDemo.Student">
         <property name="name" value="sirius"/>
     </bean>
 
-    <bean id="aspectTest" class="cn.com.git.leon.spring.AspectTest"/>
+    <bean id="aspectTest" class="cn.com.git.leon.spring.aopDemo.AspectTest"/>
 
-    <aop:config proxy-target-class="true">
+    <aop:config proxy-target-class="false">
         <aop:aspect id="aspect" ref="aspectTest">
-            <aop:pointcut id="allMethod" expression="execution(* cn.com.git.leon.spring.Student.*())" />
+            <aop:pointcut id="allMethod" expression="execution(* cn.com.git.leon.spring.aopDemo.Student.*())" />
             <aop:before method="showTime" pointcut-ref="allMethod" />
             <aop:after method="showTime" pointcut-ref="allMethod" />
         </aop:aspect>
