@@ -16,8 +16,8 @@ springmvc拦截器：实现    HandlerInterceptor
 总结
 dispatcherServlet : 继承关系HttpServletBean   将web.xml中配置的参数设置到Servlet中。比如servlet标签的子标签init-param标签中配置的参数
                             FrameworkServlet 会建立一个自己的IoC容器上下文Servlet WebApplicationContext并把上面的容器作为父容器
-                            处理请求映射
 
+处理请求映射
 拦截请求首先根据请求的路径  找到HandlerMethod(带有Method反射属性，也就是对应Controller中的方法)，然后匹配路径对应的拦截器，
 有了HandlerMethod和拦截器构造个HandlerExecutionChain对象。
 HandlerExecutionChain对象的获取是通过HandlerMapping接口提供的方法中得到。有了HandlerExecutionChain之后，
@@ -30,3 +30,11 @@ HandlerMethod内部handle的时候，使用各种HandlerMethodArgumentResolver�
 实际调用handler，返回ModelAndView
 调用ViewResolver进行视图解析
 渲染视图
+
+
+总结：1、用户发送请求 -> DispatcherServlet找到HandlerMethod，匹配对应的拦截器HandlerMapping，
+      2、然后HandlerMapping中创建HandlerExecutionChain（一个 Handler 处理器（页面控制器）对象、多个 HandlerInterceptor 拦截器）
+      3、通过Handler处理相应功能返回modelAndView
+      4、ViewResolver 将把逻辑视图名解析为具体的 View
+      5、View 会根据传进来的 Model 模型数据进行渲染
+      6、 DispatcherServlet返回用户相应

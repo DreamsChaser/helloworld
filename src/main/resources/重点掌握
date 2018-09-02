@@ -10,6 +10,8 @@ AQS源码，Unsafe的park()方法是干什么？
 15、BeanFactory有什么实现类
 8、间隙锁
 
-注解的方式读取bean
-spring mvc
-mybatis
+静态内部类
+数据库连接池
+sql注入
+多态
+工厂模式
