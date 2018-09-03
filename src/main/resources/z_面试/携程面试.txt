@@ -1,0 +1,15 @@
+1、你在项目中扮演的角色
+2、完成了那些拿得出手的
+3、接口访问量
+
+java基础
+1、jvm内存模型
+2、gc
+3、== equals hashcode
+4、hashmap内部结构、concurrenthashmap
+5、sychronize和lock
+6、四种引用
+7、内存溢出
+8、设计模式
+9、spring bean生命周期 @autowired@resource区别 @autowired两种方式，如何在一个util类中注入属性（util类标位@component，applicationContext.getBean()）
+10、redis 数据结构、缓存策略、回收策略
