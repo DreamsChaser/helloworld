@@ -11,6 +11,7 @@ public class Test {
         StaticInnerClass.staticInner staticInner = new StaticInnerClass.staticInner();
         StaticInnerClass.inner inner = clazz.new inner();
         inner.privateMethod();
-
+        new StaticInnerClass.staticInner().test();
+        StaticInnerClass.staticInner.testInnerStaticMethod();
     }
 }

@@ -1,7 +1,8 @@
 package cn.com.git.leon.javaCore.staticDemo.staticInnerClass;
 
 import cn.com.git.leon.Student;
-import com.sun.org.apache.xpath.internal.SourceTree;
+
+import static cn.com.git.leon.javaCore.staticDemo.staticInnerClass.StaticInnerClass.staticInner.aa;
 
 /**
  * @author sirius
@@ -22,12 +23,16 @@ public class StaticInnerClass {
         public void test(){
             System.out.println(aa+b);
         }
+
+        public static void testInnerStaticMethod(){
+            System.out.println("静态内部类的静态方法");
+        }
     }
 
     public class inner{
         //不能定义静态变量或静态方法
         public void privateMethod(){
-            System.out.println("私有"+c+a);
+            System.out.println("私有"+c+a+aa);
             System.out.println("jdk8还是只能访问final吗");
             System.out.println(student);
             student = new Student();
