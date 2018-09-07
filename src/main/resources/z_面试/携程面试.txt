@@ -6,7 +6,7 @@ java基础
 1、jvm内存模型
 2、gc
 3、== equals hashcode
-4、hashmap内部结构、concurrenthashmap
+4、hashmap内部结构、hashmap多线程下的问题、concurrenthashmap
 5、sychronize和lock
 6、四种引用
 7、内存溢出
