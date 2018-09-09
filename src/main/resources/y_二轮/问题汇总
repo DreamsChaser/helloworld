@@ -1,0 +1,8 @@
+1、永久带 直接内存http://wiki.jikexueyuan.com/project/java-vm/storage.html
+2、内存溢出 如何排错
+3、反射原理
+4、spring事务传播
+5、dispatcherServlet
+6、轻量级锁
+7、threadPool
+8、关闭线程池
