@@ -1,7 +1,9 @@
 package cn.com.git.leon.spring.springLifeStyle;
 
+import cn.com.git.leon.spring.aopDemo.Student;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -16,6 +18,11 @@ import javax.annotation.PreDestroy;
  */
 @Component("myBean")
 public class MyBean implements BeanNameAware,BeanFactoryAware,ApplicationContextAware,DisposableBean,InitializingBean,BeanPostProcessor {
+
+    @Autowired
+    Student student;
+    private static MyBean myBean;
+
 
     static {
         System.out.println("静态代码块");
@@ -55,6 +62,8 @@ public class MyBean implements BeanNameAware,BeanFactoryAware,ApplicationContext
 
     @PostConstruct
     public void initPostConstruct(){
+        myBean = this;
+        myBean.student = this.student;
         System.out.println("执行PostConstruct注解标注的方法");
     }
 
@@ -73,5 +82,16 @@ public class MyBean implements BeanNameAware,BeanFactoryAware,ApplicationContext
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
         System.out.println("initAfter "+beanName);
         return null;
+    }
+
+    public static void testStaticUseAutowiredValue(){
+        System.out.println("testStaticUseAutowiredValue");
+        System.out.println(myBean.student);
+        myBean.student.say();
+        System.out.println("testStaticUseAutowiredValue");
+    }
+
+    public void testMethod(){
+        System.out.println("普通方法");
     }
 }

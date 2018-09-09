@@ -13,6 +13,8 @@ public class Test {
         System.out.println("读取xml文件");
         MyBean myBean = (MyBean) applicationContext.getBean("myBean");
         System.out.println(myBean);
+        myBean.testStaticUseAutowiredValue();
         ((ClassPathXmlApplicationContext)applicationContext).registerShutdownHook();
+
     }
 }
