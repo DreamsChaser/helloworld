@@ -7,13 +7,19 @@ required requires_new supports not_supported never mandatory nested
 5、dispatcherServlet
 6、轻量级锁
 7、原子类，他们的原理是什么(volatile为什么没有原子性)
-问题循环创建线程（cyclicBarrier）
+volatile没有原子性，volatile自增分三步 将主内存数据读入工作内存，增加操作，操作完后写入主内存
+写操作有内存屏障，保证有序和可见
+AtomicReference AtomicInteger
+AtomicReferenceFieldUpdater(反射)
+AtomicIntegerArray
+内存屏障与volatile
 8、threadPool
 9、关闭线程池
 10、ThreadLocal 用过么，用途是什么，原理是什么，用的时候要注意什么。
 11、如果让你实现一个并发安全的链表，你会怎么做
-12、有哪些无锁数据结构，他们实现的原理是什么。
+12、有哪些无锁数据结构，他们实现的原理是什么。(ConcurrentModificationException用迭代器迭代时修改这个集合)
 13、多线程如果线程挂住了怎么办。
 14、countdowlatch 和 cyclicbarrier 的内部原理和用法，以及相互之间的差别。
 15、简述 ConcurrentLinkedQueue LinkedBlockingQueue 的用处和不同之处
 16、非常多个线程（可能是不同机器），相互之间需要等待协调，才能完成某种工作，问怎么设计这种协调方案。
+17、sleep和sleep(0)

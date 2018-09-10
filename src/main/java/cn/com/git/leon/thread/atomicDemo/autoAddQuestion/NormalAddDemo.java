@@ -1,4 +1,4 @@
-package cn.com.git.leon.thread.atomicDemo;
+package cn.com.git.leon.thread.atomicDemo.autoAddQuestion;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;

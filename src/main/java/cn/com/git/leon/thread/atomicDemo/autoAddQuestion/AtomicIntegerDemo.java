@@ -1,4 +1,4 @@
-package cn.com.git.leon.thread.atomicDemo;
+package cn.com.git.leon.thread.atomicDemo.autoAddQuestion;
 
 
 import java.util.concurrent.CountDownLatch;
@@ -14,9 +14,10 @@ public class AtomicIntegerDemo {
 
     public static CountDownLatch countDownLatch;
 
-    static AtomicInteger count = new AtomicInteger(0);
+    static AtomicInteger count;
 
     public static void execute() {
+        count = new AtomicInteger(0);
         countDownLatch = new CountDownLatch(1000);
         ExecutorService executor = Executors.newFixedThreadPool(1000);
         for (int i = 0;i<1000;i++) {
@@ -35,11 +36,10 @@ public class AtomicIntegerDemo {
         }
         executor.shutdown();
         System.out.println(count.get());
-        count.compareAndSet(1000,0);
     }
 
     public static void main(String[] args) {
-        for (int i = 0;i<10;i++){
+        for (int i = 0;i<100;i++){
             execute();
         }
     }
