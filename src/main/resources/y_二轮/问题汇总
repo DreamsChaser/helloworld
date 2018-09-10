@@ -1,8 +1,19 @@
 1、永久带 直接内存http://wiki.jikexueyuan.com/project/java-vm/storage.html
 2、内存溢出 如何排错
+-XX:+HeapDumpOnOutOfMemoryError：堆内存溢出时Dump出当前的内存堆转储快照以便事后分析
 3、反射原理
 4、spring事务传播
+required requires_new supports not_supported never mandatory nested
 5、dispatcherServlet
 6、轻量级锁
-7、threadPool
-8、关闭线程池
+7、原子类，他们的原理是什么(volatile为什么没有原子性)
+问题循环创建线程（cyclicBarrier）
+8、threadPool
+9、关闭线程池
+10、ThreadLocal 用过么，用途是什么，原理是什么，用的时候要注意什么。
+11、如果让你实现一个并发安全的链表，你会怎么做
+12、有哪些无锁数据结构，他们实现的原理是什么。
+13、多线程如果线程挂住了怎么办。
+14、countdowlatch 和 cyclicbarrier 的内部原理和用法，以及相互之间的差别。
+15、简述 ConcurrentLinkedQueue LinkedBlockingQueue 的用处和不同之处
+16、非常多个线程（可能是不同机器），相互之间需要等待协调，才能完成某种工作，问怎么设计这种协调方案。
