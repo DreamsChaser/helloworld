@@ -1,0 +1,10 @@
+Java内存中的对象，是无法进行IO操作或者网络通信的（序列化是表示对象的一种方式）
+序列化：将一个对象转换成一串二进制表示的字节数组，通过保存或转移这些字节数据来达到持久化的目的。
+反序列化：将字节数组重新构造成对象
+
+Java序列化机制是通过在运行时判断类的serialVersionUID来验证版本一致性的
+
+如果没有指定serialVersionUID
+Java为用户定义了默认的序列化、反序列化方法，其实就是ObjectOutputStream的defaultWriteObject方法和ObjectInputStream的defaultReadObject方法
+
+被声明为transient的属性不会被序列化，这就是transient关键字的作用
