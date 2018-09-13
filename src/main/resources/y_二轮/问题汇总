@@ -36,3 +36,4 @@ AtomicIntegerArray
     }
     例如创建线程，list排序
 19 为什么缓存比数据库快
+20 数组为什么比链表快
