@@ -8,3 +8,8 @@ Java序列化机制是通过在运行时判断类的serialVersionUID来验证版
 Java为用户定义了默认的序列化、反序列化方法，其实就是ObjectOutputStream的defaultWriteObject方法和ObjectInputStream的defaultReadObject方法
 
 被声明为transient的属性不会被序列化，这就是transient关键字的作用
+
+
+进行序列化、反序列化时，虚拟机会首先试图调用对象里的writeObject和readObject方法进行用户自定义的序列化和反序列化
+没有则会去调用默认序列化反序列化方法
+比如 某些字段序列化时希望不用java自带的序列化方式 可以定义成transient 然后通过自定义序列化手段去序列化该字段

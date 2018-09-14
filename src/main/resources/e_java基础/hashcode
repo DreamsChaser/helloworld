@@ -1,0 +1,9 @@
+hashcode的作用
+1、为什么选择hash而不是直接数组存取
+通常根据hashCode%length 来确定位置
+假设内存中有十个地址
+如果我随即存取 那么我最坏的情况下 得从头到尾遍历，
+如果我通过hashcode%length直接得到索引位置
+2、覆盖equals为什么要覆盖hashCode
+因为两个对象相等他们的hashCode一定相等
+就拿hashset举例 5个对象equals的但是hashCode不一样 相当于在hashset中存放了5个一样的数据

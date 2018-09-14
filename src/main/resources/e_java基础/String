@@ -8,3 +8,7 @@ new String也会去常量池中寻找test是否存在，不存在则会在字符
 这三个类都是final修饰的 不能被继承
 String底层的字符数组也是final修饰 修改字符串实则创建新对象
 StringBuffer线程安全
+
+string的+运算如果都是字符串常量 则在编译的时候就会生成一个总的字符串
+string的+运算 jvm每次会创建一个新的stringBuilder 进行append()操作
+stringBuffer、stringBuilder优化：构造函数中直接指定长度（防止因扩容，数组拷贝时间损耗）

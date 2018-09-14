@@ -32,7 +32,7 @@ public class StaticInnerClass {
     public class inner{
         //不能定义静态变量或静态方法
         public void privateMethod(){
-            System.out.println("私有"+c+a+aa);
+            System.out.println("私有"+c+a+aa+b);
             System.out.println("jdk8还是只能访问final吗");
             System.out.println(student);
             student = new Student();
