@@ -10,44 +10,45 @@ import java.util.function.ToLongFunction;
  * @author sirius
  * @since 2018/9/14
  */
-public class ComparatorDemo implements Comparator{
+public class ComparatorDemo implements Comparator<Bean>{
+
     @Override
-    public int compare(Object o1, Object o2) {
-        return 0;
+    public int compare(Bean o1, Bean o2) {
+        return o1.getIntValue() - o2.getIntValue();
     }
 
     @Override
-    public Comparator reversed() {
+    public Comparator<Bean> reversed() {
         return null;
     }
 
     @Override
-    public Comparator thenComparing(Comparator other) {
+    public Comparator<Bean> thenComparing(Comparator<? super Bean> other) {
         return null;
     }
 
     @Override
-    public Comparator thenComparingInt(ToIntFunction keyExtractor) {
+    public <U> Comparator<Bean> thenComparing(Function<? super Bean, ? extends U> keyExtractor, Comparator<? super U> keyComparator) {
         return null;
     }
 
     @Override
-    public Comparator thenComparingLong(ToLongFunction keyExtractor) {
+    public <U extends Comparable<? super U>> Comparator<Bean> thenComparing(Function<? super Bean, ? extends U> keyExtractor) {
         return null;
     }
 
     @Override
-    public Comparator thenComparingDouble(ToDoubleFunction keyExtractor) {
+    public Comparator<Bean> thenComparingInt(ToIntFunction<? super Bean> keyExtractor) {
         return null;
     }
 
     @Override
-    public Comparator thenComparing(Function keyExtractor) {
+    public Comparator<Bean> thenComparingLong(ToLongFunction<? super Bean> keyExtractor) {
         return null;
     }
 
     @Override
-    public Comparator thenComparing(Function keyExtractor, Comparator keyComparator) {
+    public Comparator<Bean> thenComparingDouble(ToDoubleFunction<? super Bean> keyExtractor) {
         return null;
     }
 }

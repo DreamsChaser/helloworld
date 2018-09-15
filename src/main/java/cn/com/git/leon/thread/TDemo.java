@@ -1,11 +1,9 @@
 package cn.com.git.leon.thread;
 
-import java.util.Date;
-
 /**
  * Created by shinco on 2018/8/20.
  */
-public class T implements Runnable{
+public class TDemo implements Runnable{
 
     private Object vitual = new Object();
 
@@ -31,10 +29,10 @@ public class T implements Runnable{
     }
 
     public static void main(String[] args) {
-        T t = new T();
-        Thread thread1 = new Thread(t,"线程1");
+        TDemo tDemo = new TDemo();
+        Thread thread1 = new Thread(tDemo,"线程1");
         thread1.setPriority(10);
-        Thread thread2 = new Thread(t,"线程2");
+        Thread thread2 = new Thread(tDemo,"线程2");
         thread1.start();
         thread2.start();
 

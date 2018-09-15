@@ -13,14 +13,26 @@ import java.util.List;
  */
 public class Test {
     public static void main(String[] args) {
-        ComparableDemo demo0 = new ComparableDemo(1);
-        ComparableDemo demo1 = new ComparableDemo(-1);
-        ComparableDemo demo2 = new ComparableDemo(3);
-        List<ComparableDemo> list = new ArrayList<>();
-        list.add(demo0);
-        list.add(demo1);
-        list.add(demo2);
-        System.out.println(JSON.toJSONString(list));
-        System.out.println(demo0.compareTo(demo1));
+        SortBean bean1 = new SortBean(1,"id1","name1");
+        SortBean bean2 = new SortBean(2,"id1","name1");
+        SortBean bean3 = new SortBean(3,"id1","name1");
+        Bean bean4 = new Bean(1,"id1","name1");
+        Bean bean5 = new Bean(2,"id1","name1");
+        Bean bean6 = new Bean(3,"id1","name1");
+//        List<SortBean> sortBeanList = new ArrayList<>();
+//        sortBeanList.add(bean2);
+//        sortBeanList.add(bean1);
+//        sortBeanList.add(bean3);
+//        System.out.println(JSON.toJSON(sortBeanList));
+//        Collections.sort(sortBeanList);
+//        System.out.println(JSON.toJSON(sortBeanList));
+        List<Bean> beanList = new ArrayList<>();
+        beanList.add(bean5);
+        beanList.add(bean4);
+        beanList.add(bean6);
+        System.out.println(JSON.toJSON(beanList));
+//        Collections.sort(beanList,new ComparatorDemo());
+        Collections.sort(beanList,(Bean b1,Bean b2) ->b1.getIntValue()-b2.getIntValue());
+        System.out.println(JSON.toJSON(beanList));
     }
 }

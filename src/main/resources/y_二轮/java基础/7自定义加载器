@@ -1,0 +1,2 @@
+1、继承classLoader
+2、覆盖findClass方法

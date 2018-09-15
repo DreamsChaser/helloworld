@@ -31,6 +31,8 @@ public class StaticInnerClass {
 
     public class inner{
         //不能定义静态变量或静态方法
+        int test;
+
         public void privateMethod(){
             System.out.println("私有"+c+a+aa+b);
             System.out.println("jdk8还是只能访问final吗");
@@ -44,6 +46,14 @@ public class StaticInnerClass {
         class test{
             public void test(){
                 System.out.println(c+a);
+            }
+        }
+    }
+
+    public void method(){
+        class inner{
+            public void test(){
+                System.out.println(a+aa+c);
             }
         }
     }

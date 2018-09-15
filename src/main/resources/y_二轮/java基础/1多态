@@ -1,0 +1,3 @@
+1、满足条件（继承、方法重写、父类引用指向子类对象、不是final和static也不能是private方法和protected方法）
+2、调用顺序（this.method(O)->super.method(O)->this.method((super(O)))->super.method((super)O)）
+3、编译时多态和运行时多态
