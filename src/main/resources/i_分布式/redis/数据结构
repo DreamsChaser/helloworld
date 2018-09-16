@@ -6,11 +6,16 @@ List 场景：消息队列
 Set  场景：关注人和粉丝，redis实现了求交集并集等操作
 Sorted Set 有序集合
 
+list
 Lpush key空则创建
 Lpushx key空则什么都不做
 Rpush
 Rpushx
 LPOP RPOP
+
+hash
+hget key field
+HSET key field value
 
 Redis提供了两种方式对数据进行持久化，分别是RDB和AOF。
 1、默认RDB
@@ -26,3 +31,20 @@ AOF采用文件追加方式，文件会越来越大为避免出现此种情况�
 
 
  同时开启两种方式优先使用AOF方式。
+
+
+ 过期的key的三种清理策略）。
+ 定时删除、惰性删除、定期删除
+ 定时删除：在设置key的过期时间的同时，为该key创建一个定时器，让定时器在key的过期时间来临时，对key进行删除
+    缺点：若过期key很多，删除这些key会占用很多的CPU时间
+ 惰性删除：key过期的时候不删除，每次从redis获取key的时候去检查是否过期，若过期，则删除，返回null。
+    若大量的key在超出超时时间后，很久一段时间内，都没有被获取过，那么可能发生内存泄露
+ 定期删除：每隔一段时间执行一次删除(在redis.conf配置文件设置hz，1s刷新的频率)过期key操作
+
+ 内存淘汰策略
+ noeviction：当内存不足以容纳新写入数据时，新写入操作会报错。
+ allkeys-lru：当内存不足以容纳新写入数据时，在键空间中，移除最近最少使用的key。
+ allkeys-random：当内存不足以容纳新写入数据时，在键空间中，随机移除某个key。
+ volatile-lru：当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，移除最近最少使用的key。
+ volatile-random：当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，随机移除某个key。
+ volatile-ttl：当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，有更早过期时间的key优先移除。
