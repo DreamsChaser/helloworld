@@ -1,4 +1,6 @@
 线程池
+减少了创建和销毁线程的次数，每个工作线程都可以被重复利用，可执行多个任务
+可以根据系统的承受能力，调整线程池中工作线程的数据，防止因为消耗过多的内存导致服务器崩溃
 种类
 1、newCachedThreadPool可缓存线程池，如果线程池长度超过处理需要，可灵活回收空闲线程，若无可回收，则新建线程。
 2、newFixedThreadPool 创建一个定长线程池，可控制线程最大并发数，超出的线程会在队列中等待。
@@ -33,3 +35,12 @@ maxPoolSize = (max(tasks)- queueCapacity)/(1/taskcost)
 （最大任务数-队列容量）/每个线程每秒处理能力 = 最大线程数
 rejectedExecutionHandler：根据具体情况来决定，任务不重要可丢弃，任务重要则要利用一些缓冲机制来处理
 keepAliveTime和allowCoreThreadTimeout采用默认通常能满足
+
+
+execute和submit
+execute执行runnable 无返回值
+submit 执行callable 有返回值
+
+线程池的关闭
+shutdown         该方法不会等待之前已经提交的任务执行完毕，awaitTermination方法才有这个效果
+awaitTermination 有个超时时间 会判断线程池是否关闭

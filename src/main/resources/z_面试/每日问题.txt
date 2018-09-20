@@ -1,10 +1,11 @@
 每日整理不会问题
-分布式锁的应用场景
-用户操作了两次购买操作 第一次 进入获取余额100 第二次同时进入也是100
-md5加密策略
-工厂模式
 jdk1.8新特性：hashmap红黑树 concurrentHashmap无锁算法 lambda
-静态内部类实例化,无需子类,
-实例化通过 new 外部类名.内部静态类名()
-通过外部类名.内部静态类名.静态方法
-成员内部类实例化通过 外部类实例.new 内部类名()
+
+线程池内部原理
+
+LinkedBlockingQueue
+lock读写锁如何实现的
+
+hashmap红黑树 concurrentHashMap treemap linkedhashmap
+
+dubbo zookeeper redis kafka
