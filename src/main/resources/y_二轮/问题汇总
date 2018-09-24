@@ -37,3 +37,7 @@ AtomicIntegerArray
     例如创建线程，list排序
 19 为什么缓存比数据库快
 20 数组为什么比链表快
+21 spring循环依赖
+22 list集合
+23 线程池的阻塞队列
+24 yield sleep和sleep(0)
