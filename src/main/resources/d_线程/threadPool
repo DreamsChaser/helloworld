@@ -43,4 +43,6 @@ submit 执行callable 有返回值
 
 线程池的关闭
 shutdown         该方法不会等待之前已经提交的任务执行完毕，awaitTermination方法才有这个效果
-awaitTermination 有个超时时间 会判断线程池是否关闭
+                 awaitTermination 有个超时时间 会判断线程池是否关闭（任务依旧能够执行完毕）
+shutdownNow      强制关闭并中断执行中的线程，返回等待的任务
+
