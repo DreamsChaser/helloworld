@@ -1,3 +1,5 @@
+数组的拷贝 Arrays.copyOf  System.arraycopy clone
+
 copyOf(T[] original, int newLength)
 ->copyOf(U[] original, int newLength, Class<? extends T[]> newType
 1、根据传入的newType选择直接new或者反射反射生成数组
@@ -11,7 +13,9 @@ copyOf(T[] original, int newLength)
     dest：目标数组对象
     destPos：目标数据中的起始位置
     length：要拷贝的数组元素的数量
-    是浅拷贝
+    是浅拷贝(数组对象不一致 但是数组中的引用类型是引用的复制)
 
 
 Arrays.copyOf和System.copyOf
+Arrays.copyOf返回新数组
+System.copyOf入参需要一个新数组，在新数组上操作
