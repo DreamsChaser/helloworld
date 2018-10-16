@@ -1,0 +1,23 @@
+内部结构
+size
+Node<E> first
+Node<E> last
+
+构造函数
+public LinkedList(Collection<? extends E> c) {
+        this();
+        addAll(c);
+    }
+
+add(e)
+->linkLast(e);
+        final Node<E> l = last;
+        final Node<E> newNode = new Node<>(l, e, null);
+        last = newNode;
+        if (l == null)
+            first = newNode;
+        else
+            l.next = newNode;
+        size++;
+        modCount++;
+
