@@ -2,24 +2,10 @@
 2、内存溢出 如何排错
     -XX:+HeapDumpOnOutOfMemoryError：堆内存溢出时Dump出当前的内存堆转储快照以便事后分析
     具体调大堆内存大小或者优化对象生命周期
-3、反射原理
-    类在加载时会把class内容存在方法区并实例化一个class对象，这个对象里面包含一个reflectionData这里面包含了
-    一些成员变量，构造方法，成员方法等。可以获取这些变量或者调用这些方法。
-4、spring事务传播
-    required 有就加入没有就挂起
-    requires_new 原事务挂起 新建事务
-    supports 有就加入，没有就是非事务
-    not_supported 原事务挂起 非事务进行
-    never 以非事务方式进行，原来有事务则抛出异常
-    mandatory
-    nested 有事务则嵌套事务（内部事务等外部事务提交后才提交，外部事务失败后则回滚）
 5、dispatcherServlet
     用户发送请求 -> DispatcherServlet根据路径匹配拦截器handlerMapping -> handlerMapping创建handlerExecutionChain
     ->handlerExecutionChain包含handler处理器->handler处理具体方法返回modelAndView
     -> viewResolver处理之后返view,view根据model中的数据进行渲染返回给用户
-6、偏向锁，轻量级锁，重量级锁
-   锁的状态存放在对象的头文件中，没有竞争时锁为偏向锁，如果别的线程获取锁，锁则置为轻量级锁
-   如果是线程竞争，则置为重量级锁
 7、原子类，他们的原理是什么(volatile为什么没有原子性)
     volatile没有原子性，volatile自增分三步 将主内存数据读入工作内存，增加操作，操作完后写入主内存
     写操作有内存屏障，保证有序和可见
@@ -27,17 +13,6 @@
     AtomicReferenceFieldUpdater(反射)
     AtomicIntegerArray
     内存屏障与volatile
-8、threadPool
-    coolPoolSize 当前线程数>coolPoolSize 新任务进入阻塞队列
-    maxPoolSize  当前线程数=maxPoolSize 拒绝策略
-    workQueue
-    拒绝策略 ：about 抛出异常
-               discard 抛弃任务
-               callRun 由创建线程池的线程去执行任务
-    newCacheThreadPool() coolPoolSize=0 maxPoolSize=INTEGER.MAX 不停创建线程，知道达到最大
-    newFixedThreadPool(n) coolPoolSize=n maxPoolSize=n 只有n个线程 超过后将进入等待队列
-    newScheduledThreadPool
-    newSingleThreadPool
 9、线程池的阻塞队列
     1）ArrayBlockingQueue：基于数组的先进先出队列，此队列创建时必须指定大小；
     2）LinkedBlockingQueue：基于链表的先进先出队列，如果创建时没有指定此队列大小，则默认为Integer.MAX_VALUE；
@@ -68,6 +43,8 @@
       return statmentM;
     }
     例如创建线程，list排序
+list去重的几种方式
+hashmap对于null的存取
 22 为什么缓存比数据库快
 23 数组为什么比链表快
 24 spring循环依赖
@@ -82,3 +59,5 @@
     如果没有正在等待的线程，或者所有正在等待的线程的优先级都比较低，那么该线程会继续运行。
 27 判断方法是否同步
 28 读写锁的实现
+29 对象在内存中存储的布局
+30 浅拷贝中的基本数据类型

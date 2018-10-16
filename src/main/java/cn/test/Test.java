@@ -1,5 +1,8 @@
 package cn.test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
 /**
@@ -8,16 +11,11 @@ import java.util.concurrent.CountDownLatch;
 public class Test {
 
     public static void main(String[] args) {
-        String str1 = "abc";
-        String str2 = "def";
-        String str3 = "abcdef";
-        String str4 = "abc" + "def";
-        System.out.println(str1+str2==str3);
-        System.out.println(str3 == str4);
-        try {
-            new CountDownLatch(1).await();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Object[] origin = {123,"str"};
+
+        Object[] array = Arrays.copyOf(origin,4);
+        System.out.println(array);
+        System.out.println(array.length);
     }
+
 }

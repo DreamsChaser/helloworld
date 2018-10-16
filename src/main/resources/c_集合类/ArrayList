@@ -1,0 +1,25 @@
+默认容量10
+底层是个数组 Object[] elementData
+构造方法 ArrayList(n) 初始化大小为n的数组
+         ArrayList() 初始化大小为0的数组
+         ArrayList(Collection c) 调用c的toArray赋值给elementData，非Object[]则elementData = Arrays.copyOf
+
+
+add
+1、判断是否需要扩容 ensureCapacityInternal(size + 1)
+   calculateCapacity(elementData, minCapacity) 先判断原数组elementData 是否为空，空则取 默认容量和size+1中的最大值 否则返回size+1
+   ensureExplicitCapacity()上一行的返回值 modCount++ 判断上一行返回值是否大于数组长度elementData.length 大于则grow(size + 1) 否则进行2
+
+2、elementData[size++] = e; 将数组的size加1并赋值
+----------------------------------------------------------------------------------------------
+grow（minCapacity == size + 1） 扩容
+int oldCapacity = elementData.length; 旧数组长度
+int newCapacity = oldCapacity + (oldCapacity >> 1); 扩容为1.5倍
+扩容后长度newCapacity小于minCapacity 则新长度为minCapacity
+扩容后长度newCapacity大于ArrayList最大长度Integer.MAX_VALUE - 8; （2^31 - 8）
+    则newCapacity = hugeCapacity(minCapacity);返回minCapacity>MAX_ARRAY_SIZE?Integer.MAX_VALUE:MAX_ARRAY_SIZE;
+扩容elementData = Arrays.copyOf(elementData, newCapacity);
+
+(ArrayList最大长度Integer.MAX_VALUE - 8  )
+数组作为一个对象，需要一定的内存存储对象头信息，对象头信息最大占用内存不可超过8字节。
+----------------------------------------------------------------------------------------------
