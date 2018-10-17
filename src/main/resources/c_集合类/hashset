@@ -1,0 +1,3 @@
+底层用hashmap实现 value都是同一个Object()对象
+
+和hashmap put一样

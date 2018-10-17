@@ -1,0 +1,21 @@
+维护了一个双向链表
+集成hashmap put方法没有重写
+重写了newNode方法
+调用linkNodeLast
+定义Entry集成hashmap的Node
+每个entry有一个before有一个after
+每个linkedhashmap还有个head 一个tail
+
+
+LinkedHashMap.Entry<K,V> last = tail;
+        tail = p;
+        if (last == null)
+            head = p;
+        else {
+            p.before = last;
+            last.after = p;
+        }
+
+插入时把新Node p 赋值给tail（如何last==null head也变成p）
+last赋值给p.before
+p赋值给last的after
