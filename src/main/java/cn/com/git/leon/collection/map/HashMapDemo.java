@@ -11,8 +11,9 @@ public class HashMapDemo {
     public static void main(String[] args) {
         int i = (int) (0.75*2);
         final HashMap  hashMap = new HashMap(2);
-        hashMap.put(5,"key5");
-        hashMap.put(7,"key7");
-        hashMap.put(3,"key3");
+        hashMap.put(0,null);
+        hashMap.put(null,"2");
+        System.out.println(hashMap.size());
+
     }
 }
