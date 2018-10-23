@@ -1,0 +1,1 @@
+AQS的volatile int state；int类型是32位的高16位表示写锁，低16位表示读锁
