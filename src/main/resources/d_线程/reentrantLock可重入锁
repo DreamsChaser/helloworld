@@ -1,0 +1,25 @@
+简要概述
+公平锁部分：
+lock:AQS.acquire(1)
+覆盖父类中的tryAcquire
+    protected final boolean tryAcquire(int acquires) {
+                final Thread current = Thread.currentThread();
+                int c = getState();
+                if (c == 0) {
+                    if (!hasQueuedPredecessors() &&
+                        compareAndSetState(0, acquires)) {
+                        setExclusiveOwnerThread(current);
+                        return true;
+                    }
+                }
+                else if (current == getExclusiveOwnerThread()) {
+                    int nextc = c + acquires;
+                    if (nextc < 0)
+                        throw new Error("Maximum lock count exceeded");
+                    setState(nextc);
+                    return true;
+                }
+                return false;
+            }
+    }
+获得共享状态state，state为0表示未锁定，cas设置状态+1，state为1表示已经锁定，判断可重入（统一线程+1，不同返回false）

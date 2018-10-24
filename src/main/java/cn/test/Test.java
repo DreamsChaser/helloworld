@@ -11,11 +11,8 @@ import java.util.concurrent.CountDownLatch;
 public class Test {
 
     public static void main(String[] args) {
-        Object[] origin = {123,"str"};
-
-        Object[] array = Arrays.copyOf(origin,4);
-        System.out.println(array);
-        System.out.println(array.length);
+        final String str = new String("123");
+        System.out.println(str);
     }
 
 }

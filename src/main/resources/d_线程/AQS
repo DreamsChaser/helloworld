@@ -9,7 +9,7 @@ acquire(int)独占模式下线程获取共享资源，如果获取到资源，�
             acquireQueued(addWaiter(Node.EXCLUSIVE), arg))
             selfInterrupt();
     }
-    1、如果获取到资源，线程直接返回
+    1、如果获取到资源，线程直接返回（父类抽象，子类实现）
     2、没有获取到执行addWaiter(Node.EXCLUSIVE),  arg)进入等待队列，自旋cas存入队尾
     3、acquireQueued在等待队列中获取资源
 

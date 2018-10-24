@@ -1,0 +1,28 @@
+AQS的volatile int state；int类型是32位的高16位表示读锁，低16位表示写锁
+AQS.acquireShared(1)
+tryAcquire父类抽象子类实现
+protected final boolean tryAcquire(int acquires) {
+            Thread current = Thread.currentThread();
+            int c = getState();
+            int w = exclusiveCount(c);
+            if (c != 0) {
+                if (w == 0 || current != getExclusiveOwnerThread())
+                    return false;
+                if (w + exclusiveCount(acquires) > MAX_COUNT)
+                    throw new Error("Maximum lock count exceeded");
+                // Reentrant acquire
+                setState(c + acquires);
+                return true;
+            }
+            if (writerShouldBlock() ||
+                !compareAndSetState(c, c + acquires))
+                return false;
+            setExclusiveOwnerThread(current);
+            return true;
+        }
+获取同步状态c，并从中分离出低16为的写锁w状态
+如果同步状态不为0，说明存在读锁或写锁
+如果存在读锁（c ！=0 && w == 0），则不能获取写锁（保证写对读的可见性）
+如果当前线程不是上次获取写锁的线程，则不能获取写锁（写锁为独占锁）
+如果以上判断均通过，则在低16为写锁同步状态上利用CAS进行修改（增加写锁同步状态，实现可重入）
+将当前线程设置为写锁的获取线程
