@@ -1,10 +1,9 @@
-package cn.com.git.leon.lambdaDemo;
+package cn.com.git.leon.jdk8.lambdaDemo;
 
 import com.alibaba.fastjson.JSON;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
 
 /**
  * @author sirius

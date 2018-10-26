@@ -11,8 +11,15 @@ import java.util.concurrent.CountDownLatch;
 public class Test {
 
     public static void main(String[] args) {
-        final String str = new String("123");
-        System.out.println(str);
+        Integer i = -129;
+        Integer j = -129;
+        System.out.println(i==j);
+        CountDownLatch countDownLatch = new CountDownLatch(1);
+        try {
+            countDownLatch.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 }

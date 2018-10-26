@@ -1,4 +1,4 @@
-package cn.com.git.leon.lambdaDemo;
+package cn.com.git.leon.jdk8.lambdaDemo;
 
 import java.util.ArrayList;
 import java.util.List;
