@@ -14,6 +14,10 @@ public class HashMapDemo {
         hashMap.put(0,null);
         hashMap.put(null,"2");
         System.out.println(hashMap.size());
+        HashMap hashMap1 = new HashMap();
+        hashMap1.put("1","a");
+        hashMap1.put("1","b");
+        System.out.println(hashMap1.size());
 
     }
 }
