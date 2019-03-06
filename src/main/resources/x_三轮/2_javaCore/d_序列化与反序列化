@@ -4,7 +4,7 @@
     反序列化：将字节数组重新构造成对象
 
 
-1、对象必须实现serializable接口(否则报出异常NotSerializableException)
+1、对象必须实现serializable/Externalizable接口(否则报出异常NotSerializableException)
 2、Java序列化机制是通过在运行时判断类的serialVersionUID来验证版本一致性的
     序列化时将serialVersionUID写入，反序列化是判断serialVersionUID是否一致
     不一致报错java.io.InvalidClassException: local class incompatible:
@@ -15,6 +15,8 @@
 然后通过自定义序列化手段去序列化该字段(加密)
 5、进行序列化、反序列化时，虚拟机会首先试图调用对象里的writeObject和readObject方法
 进行用户自定义的序列化和反序列化(手动序列化ObjectOutputStream和ObjectInputSteam)
-   没有则会去调用默认序列化反序列化方法
+   没有则会去调用默认序列化反序列化方法(ObjectOutputSteam.defaultWriteObject,readObject)
 6自定义序列化
 见../../B_javaCore/b_keyworld/TransientDemo.java
+--------------------------------------------------------
+Externalizable 不进行自动序列化 只可进行手动序列化（Serializable自动序列化）
