@@ -1,6 +1,7 @@
 package 三轮.B_JavaCore.b_keyworld;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
@@ -17,6 +18,8 @@ public class TransientBean implements Serializable{
     private String name;
 
     private transient String password;
+
+    private static String staticField;
 
     public String getId() {
         return Id;
@@ -42,12 +45,23 @@ public class TransientBean implements Serializable{
         this.password = password;
     }
 
-    public void writeObject(ObjectOutputStream out) throws IOException {
+    private void writeObject(ObjectOutputStream out) throws IOException {
         System.out.println("手动序列化");
         out.defaultWriteObject();
-//        out.writeInt(transientField.length());
-//        for (int i = 0;i<transientField.length();i++){
-//            out.writeChar(transientField.charAt(i));
-//        }
+        out.writeObject(password.toUpperCase());
+    }
+
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        System.out.println("手动反序列化");
+        in.defaultReadObject();
+        password = (String) in.readObject();
+    }
+
+    public static String getStaticField() {
+        return staticField;
+    }
+
+    public static void setStaticField(String staticField) {
+        TransientBean.staticField = staticField;
     }
 }

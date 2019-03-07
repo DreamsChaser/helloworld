@@ -14,7 +14,8 @@ public class TransientDemo {
         TransientBean bean = new TransientBean();
         bean.setId("1");
         bean.setName("tom");
-        bean.setPassword("123456");
+        bean.setPassword("abc");
+        TransientBean.setStaticField("test1");
         File file = new File("D:\\workspace\\serializableText");
         if (file.exists()){
             file.delete();
@@ -29,6 +30,7 @@ public class TransientDemo {
                 Object object = in.readObject();
                 TransientBean transientBean = (TransientBean) object;
                 System.out.println(transientBean.getId()+transientBean.getName()+transientBean.getPassword());
+                System.out.println(TransientBean.getStaticField());
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }

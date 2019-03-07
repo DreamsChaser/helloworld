@@ -19,12 +19,14 @@ public class TransientBean2 implements Externalizable {
 
     @Override
     public void writeExternal(ObjectOutput out) throws IOException {
-
+        System.out.println("手动序列化");
+        out.writeObject(id + password);
     }
 
     @Override
     public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
-
+        System.out.println("手动反序列化");
+        id = (String) in.readObject();
     }
 
     public String getId() {
