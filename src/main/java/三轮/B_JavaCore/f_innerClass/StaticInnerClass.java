@@ -12,9 +12,9 @@ public class StaticInnerClass {
 
     static int c;
 
-    public static class Inner{
+    public static class StaticInner{
 
-        public void show(){
+        public void show() {
             c = 10;
         }
 

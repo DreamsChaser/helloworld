@@ -23,4 +23,10 @@ public class A extends Father{
     public A() {
         System.out.println("A构造");
     }
+
+    public static class inner{
+        static {
+            System.out.println("内部类代码块");
+        }
+    }
 }

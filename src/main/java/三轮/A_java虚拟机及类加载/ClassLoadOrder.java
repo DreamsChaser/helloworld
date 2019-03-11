@@ -21,5 +21,6 @@ public class ClassLoadOrder{
          * ->B普通代码块->B构造->(子)A构造
          */
         A a = new A();
+//        A.inner inner = new A.inner();
     }
 }

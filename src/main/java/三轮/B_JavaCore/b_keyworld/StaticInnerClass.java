@@ -6,12 +6,6 @@ package 三轮.B_JavaCore.b_keyworld;
  */
 public class StaticInnerClass {
 
-    int a;
-
-    static int b;
-
-    final int c = 0;
-
     public static class innerClass{
 
     }
