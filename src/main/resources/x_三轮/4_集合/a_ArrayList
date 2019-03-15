@@ -1,0 +1,19 @@
+1、底层实现
+底层是数组Object[]
+构造有三种
+public ArrayList() {
+    this.elementData = {};
+}
+public ArrayList(int n) {
+    new Object[n]
+}
+public ArrayList(Collection c){
+    elementData = c.toArray();
+        if ((size = elementData.length) != 0) {
+            // c.toArray might (incorrectly) not return Object[] (see 6260652)
+            if (elementData.getClass() != Object[].class)
+                elementData = Arrays.copyOf(elementData, size, Object[].class);
+        }
+    }
+}
+2、扩容方式
