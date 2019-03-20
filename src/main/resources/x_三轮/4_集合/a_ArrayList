@@ -16,4 +16,25 @@ public ArrayList(Collection c){
         }
     }
 }
-2、扩容方式
+
+2、添加元素
+add
+a、判断是否需要扩容ensureCapacityInternal(size + 1),先判断原数组elementData 是否为空，空则取 默认容量和size+1中的最大值 否则返回size+1
+b、modCount++,如果size+1大于数组长度则扩容
+
+3、扩容方式
+grow
+int oldCapacity = elementData.length;   旧数组长度
+int newCapacity = oldCapacity + (oldCapacity >> 1);   新数组长度（扩容1.5倍）
+newCapacity超过Integer.MAX_VALUE - 8时 (minCapacity > MAX_ARRAY_SIZE) ? Integer.MAX_VALUE : MAX_ARRAY_SIZE
+Arrays.copyOf()
+
+4、优缺点
+查询速度快 直接根据下标索引 ，增加删除慢因为涉及到数组扩容移动
+
+5、线程安全性
+线程不安全
+
+6、其它特性
+有序:插入顺序
+可以重复，可以插入null
