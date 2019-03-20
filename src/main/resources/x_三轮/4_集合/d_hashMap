@@ -34,7 +34,18 @@ d、原位置Node与put的Node不一致则遍历链表若(hash==,key==||key.equa
 e、判断实际存在的键值对数量size是否超多了最大容量threshold，如果超过，进行扩容。
 
 3、扩容方式
-
+jdk1.8的扩容:
+1、初始化 0的时候扩容为长度1>>4即16，极限键值对为16*0.75=12
+   其它时候长度和键值对扩容为2倍
+2、新建Node<K,V>[] newTab = (Node<K,V>[])new Node[newCap];
+3、循环旧数组
+    把旧数组的Node赋值给e并把旧数组置空
+    if ((e = oldTab[j]) != null) {
+        oldTab[j] = null;
+    如果链表没有后续节点，直接重新计算位置并赋值
+    if (e.next == null) {
+        newTab[e.hash & (newCap - 1)] = e;
+    如果链表有后续节点
 4、优缺点
 
 5、线程安全性
