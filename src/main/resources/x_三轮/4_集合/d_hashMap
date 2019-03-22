@@ -35,17 +35,26 @@ e、判断实际存在的键值对数量size是否超多了最大容量threshold
 
 3、扩容方式
 jdk1.8的扩容:
-1、初始化 0的时候扩容为长度1>>4即16，极限键值对为16*0.75=12
-   其它时候长度和键值对扩容为2倍
-2、新建Node<K,V>[] newTab = (Node<K,V>[])new Node[newCap];
-3、循环旧数组
+a、初始化 0的时候扩容为长度1>>4即16，极限键值对为16*0.75=12
+   其它时候长度和键值对扩容为2倍(长度为元长度*2，length-1在扩容前后的变化就转化成二进制高位多1bit,
+   确定下标运算为hash&length-1可得扩容后的位置要么不变要么原位置+元长度（左边多1bit）这样只需知道hash多出的一位是1还是0就可以(即hash&length(不减1)))
+b、新建Node<K,V>[] newTab = (Node<K,V>[])new Node[newCap];
+c、循环旧数组
     把旧数组的Node赋值给e并把旧数组置空
     if ((e = oldTab[j]) != null) {
         oldTab[j] = null;
     如果链表没有后续节点，直接重新计算位置并赋值
     if (e.next == null) {
         newTab[e.hash & (newCap - 1)] = e;
-    如果链表有后续节点
+    如果链表有后续节点 循环遍历链表 hash&oldCap
+    判断0或者1 0则newTab[] = e
+               1则newTab[+oldCap] = e
+
+jdk1.7的扩容:
+创建一个新的数组newTable，容量是oldTable的一倍
+遍历oldTable，拿到每个链表
+遍历链表，头插法插入newTable
+
 4、优缺点
 
 5、线程安全性
@@ -53,3 +62,4 @@ jdk1.8的扩容:
 
 6、其它特性
 键和值都可以为空（建为空是k=0）
+ConcurrentModifyException
