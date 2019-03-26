@@ -54,7 +54,13 @@ jdk1.7的扩容:
 创建一个新的数组newTable，容量是oldTable的一倍
 遍历oldTable，拿到每个链表
 遍历链表，头插法插入newTable
-
+do {
+    Entry<K,V> next = e.next; // <--假设线程一执行到这里就被调度挂起了
+    int i = indexFor(e.hash, newCapacity);
+    e.next = newTable[i];(头插法，将现有节点插入目标节点的next)
+    newTable[i] = e;
+    e = next;
+} while (e != null);
 4、优缺点
 
 5、线程安全性
