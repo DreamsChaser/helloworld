@@ -1,0 +1,7 @@
+底层依然由“数组”+链表+红黑树；
+
+CAS算法 unsafe.compareAndSwapInt(this, valueOffset, expect, update)
+如果valueOffset位置包含的值与expect值相同，则更新valueOffset位置的值为update，并返回true，
+否则不更新，返回false
+
+hash值相同的链表头结点依然用synchronized加锁
