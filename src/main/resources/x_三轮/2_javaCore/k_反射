@@ -1,0 +1,2 @@
+类在加载过程中会实例化一个java.lang.Class对象
+class对象里包含 field method construct等一些 可以通过一些方法获取类的属性 调用类的方法
