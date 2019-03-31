@@ -1,0 +1,8 @@
+抽象类Sync
+根据传入构造方法的布尔型参数实例化出Sync的实现类FairSync和NonfairSync(公平锁和非公平锁)
+
+非公平锁:线程1调用ReentrantLock的lock()
+NonfairSync.lock()->AbstractQueueSynchronized.compareAndSetState(0,1)
+->AbstractOwnableSynchronizer.setExclusiveOwnerThread(Thread.currentThread)
+
+线程2调用ReentrantLock的lock() CAS判断失败acquire(1)
