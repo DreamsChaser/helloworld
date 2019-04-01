@@ -1,6 +1,5 @@
 package 三轮.E_Thread.lock;
 
-import java.util.concurrent.locks.Lock;
 
 /**
  * @author sirius
