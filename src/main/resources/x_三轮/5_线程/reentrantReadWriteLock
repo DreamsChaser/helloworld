@@ -1,8 +1,13 @@
 由于lock基于AQS实现 AQS设置线程同步状态的 volatile int state
 int 4字节32位 高16位表示读锁，低16位表示写锁
+
+读写锁中读锁与读锁共享 读与写 写与写 写与读都是互斥
 protected final boolean tryAcquire(int acquires) {
+    //获取当前线程
     Thread current = Thread.currentThread();
+    //获取volatile修饰的state(可见)
     int c = getState();
+    // w = c & (1 << 16) - 1定义锁的数量(可重入)
     int w = exclusiveCount(c);
     if (c != 0) {
         if (w == 0 || current != getExclusiveOwnerThread())
@@ -19,3 +24,5 @@ protected final boolean tryAcquire(int acquires) {
     setExclusiveOwnerThread(current);
     return true;
 }
+
+

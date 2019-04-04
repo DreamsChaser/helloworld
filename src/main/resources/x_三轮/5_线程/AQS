@@ -19,3 +19,9 @@ int waitStatus
 Node prev Node next
 Thread thread 当前Node持有的线程
 Node nextWaiter 表示下一个等待condition的Node
+
+int state 同步状态，0表示未锁
+compareAndSetState利用CAS进行State的设置
+
+Thread exclusiveOwnerThread
+这个是AQS父类AbstractOwnableSynchronizer的属性，表示独占模式同步器的当前拥有者
