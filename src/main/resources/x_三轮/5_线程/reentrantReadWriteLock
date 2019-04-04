@@ -2,10 +2,20 @@
 int 4字节32位 高16位表示读锁，低16位表示写锁
 
 读写锁中读锁与读锁共享 读与写 写与写 写与读都是互斥
+
+1、读锁
+sync.acquireShared(1);
+
+
+
+
+
+
+
 protected final boolean tryAcquire(int acquires) {
     //获取当前线程
     Thread current = Thread.currentThread();
-    //获取volatile修饰的state(可见)
+    //获取volatile修饰的state(可见),0表示未锁定
     int c = getState();
     // w = c & (1 << 16) - 1定义锁的数量(可重入)
     int w = exclusiveCount(c);

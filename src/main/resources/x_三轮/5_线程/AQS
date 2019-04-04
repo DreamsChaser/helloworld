@@ -25,3 +25,5 @@ compareAndSetState利用CAS进行State的设置
 
 Thread exclusiveOwnerThread
 这个是AQS父类AbstractOwnableSynchronizer的属性，表示独占模式同步器的当前拥有者
+
+1、acquireShared

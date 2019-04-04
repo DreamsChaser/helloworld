@@ -9,7 +9,8 @@ public class ReadLockTest {
     public static void main(String[] args) {
         ReadLockDemo readLockDemo = new ReadLockDemo();
         new Thread(readLockDemo,"线程1").start();
-        new Thread(readLockDemo,"线程2").start();
+//        new Thread(readLockDemo,"线程2").start();
+        System.out.println("结束");
 
     }
 }
