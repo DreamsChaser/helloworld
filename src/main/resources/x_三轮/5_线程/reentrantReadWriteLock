@@ -4,7 +4,50 @@ int 4字节32位 高16位表示读锁，低16位表示写锁
 读写锁中读锁与读锁共享 读与写 写与写 写与读都是互斥
 
 1、读锁
-sync.acquireShared(1);
+readLock.lock
+
+sync.acquireShared(1){
+    if (tryAcquireShared(arg) < 0)
+        doAcquireShared(arg);
+};
+
+尝试获取锁
+tryAcquiredShared(1){
+    //获取当前线程
+    Thread current = Thread.currentThread();
+    //获取volatile修饰的state(可见),0表示未锁定
+    int c = getState();
+    //exclusiveCount(c) = c&((1<<16) -1) 未锁定时返回0 锁定返回 1111 1111 1111 1111
+    //getExclusiveOwnerThread() 获得独占模式同步器的当前拥有者
+    //锁定状态并且不是当前线程 返回-1
+    if (exclusiveCount(c) != 0 &&
+                    getExclusiveOwnerThread() != current)
+                    return -1;
+    //r = c>>>16无符号右移16位
+    int r = sharedCount(c);
+    if (!readerShouldBlock() &&
+        r < MAX_COUNT &&
+        compareAndSetState(c, c + SHARED_UNIT)) {
+        if (r == 0) {
+            firstReader = current;
+            firstReaderHoldCount = 1;
+        } else if (firstReader == current) {
+            firstReaderHoldCount++;
+        } else {
+            HoldCounter rh = cachedHoldCounter;
+            if (rh == null || rh.tid != getThreadId(current))
+                cachedHoldCounter = rh = readHolds.get();
+            else if (rh.count == 0)
+                readHolds.set(rh);
+            rh.count++;
+        }
+        return 1;
+    }
+    return fullTryAcquireShared(current);
+
+}
+
+
 
 
 
@@ -15,7 +58,7 @@ sync.acquireShared(1);
 protected final boolean tryAcquire(int acquires) {
     //获取当前线程
     Thread current = Thread.currentThread();
-    //获取volatile修饰的state(可见),0表示未锁定
+
     int c = getState();
     // w = c & (1 << 16) - 1定义锁的数量(可重入)
     int w = exclusiveCount(c);
