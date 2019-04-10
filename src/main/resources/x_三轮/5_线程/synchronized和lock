@@ -23,3 +23,5 @@ synchronized和lock比较
    同时可以判断线程是否获得锁tryLock()，来进行一些其他操作
 4在性能上来说，如果竞争资源不激烈，两者的性能是差不多的，
 而当竞争资源非常激烈时（即有大量线程同时竞争），此时Lock的性能要远远优于synchronized。所以说，在具体使用时要根据适当情况选择。
+5、线程间通信synchronized用wait和notify和notifyAll
+             lock用condition的await signal和signalAll
