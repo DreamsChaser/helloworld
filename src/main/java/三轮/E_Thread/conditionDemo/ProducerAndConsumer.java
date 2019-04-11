@@ -1,5 +1,6 @@
 package 三轮.E_Thread.conditionDemo;
 
+import java.sql.Time;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -14,71 +15,69 @@ public class ProducerAndConsumer {
 
     private static ReentrantLock lock = new ReentrantLock();
 
-    private static int balance = 100;
+    private static int balance = 20;
 
-    private static int num = 0;
+    private static int num = 1;
 
     private static int earn = 0;
 
     public static void main(String[] args) {
         Condition coco = lock.newCondition();
         ExecutorService producer = Executors.newCachedThreadPool();
-        while (true) {
-            if (balance <= 0){
-                break;
-            }
-            producer.submit(new Runnable() {
-                @Override
-                public void run() {
-                    lock.lock();
-                    try {
-                        if (num == 0) {
-                            TimeUnit.SECONDS.sleep(2);
-                            num = num + 1;
-                            System.out.println("可乐到了");
-                            coco.signal();
-                            System.out.println("通知结束");
-                        } else {
-                            coco.await();
-                            System.out.println("coco被买走了");
-                            earn = earn + 10;
-                        }
-
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    } finally {
-                        lock.unlock();
-                    }
+        producer.submit((Runnable) () -> {
+            while (true) {
+                if (earn >= 20){
+                    break;
                 }
-            });
-
+                lock.lock();
+                try {
+                    if (num == 1) {
+                        coco.await();
+                        earn = earn + 10;
+                        System.out.println("卖出一瓶可乐，今天收益"+earn+"元");
+                    } else if (num == 0) {
+                        TimeUnit.SECONDS.sleep(2);
+                        num = num + 1;
+                        System.out.println("生产了一瓶可乐");
+                        coco.signal();
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } finally {
+                    lock.unlock();
+                }
+            }
+        });
+        producer.shutdown();
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
         ExecutorService consumer = Executors.newCachedThreadPool();
-        while (true) {
-            if (balance <= 0) {
-                break;
-            }
-            consumer.submit(new Runnable() {
-                @Override
-                public void run() {
-                    lock.lock();
-                    try {
-                        if (num == 0) {
-                            System.out.println("coco没货了");
-                            coco.signal();
-                        } else {
-                            balance = balance - 5;
-                            System.out.println("买到了");
-                            coco.await();
-                        }
-                        TimeUnit.SECONDS.sleep(2);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    } finally {
-                        lock.unlock();
-                    }
+        consumer.submit((Runnable) () -> {
+            while (true) {
+                if (balance <= 0){
+                    break;
                 }
-            });
-        }
+                lock.lock();
+                try {
+                    if (num == 0) {
+                        coco.await();
+                    } else if (num == 1){
+                        TimeUnit.SECONDS.sleep(2);
+                        num = num - 1;
+                        balance = balance - 10;
+                        System.out.println("买走了一瓶可乐,还剩"+balance+"元");
+                        coco.signal();
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } finally {
+                    lock.unlock();
+                }
+            }
+        });
+        consumer.shutdown();
     }
 }
