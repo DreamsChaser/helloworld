@@ -1,0 +1,22 @@
+分代收集
+将堆中对象划分为 年轻代 老年代
+年轻代有一个eden区和两个survivor区，默认8:1
+
+新创建的对象都会被分配到Eden区,Eden区满后进行第一次Minor GC
+GC后会将eden区的存活(可达性分析)的对象存放在from survivor区中
+下一次minor GC会把eden区存活的对象和from survivor区中存活的对象转移到to survivor区中
+之后 from survivor 和to survivor 角色互换。等待下一次gc
+而在survivor移动过程达到一定次数（-XX:MaxTenuringThreshold）后进入老年区
+老年区满后执行full gc(也称Major gc)
+
+
+
+可达性分析
+从gc roots出发(引用),看引用和对象间是否存在引用链
+若无，在判断是否覆盖finalize方法，覆盖则finalize中对象与引用链上的对象关联，关联则复活，否则死亡
+
+四种引用
+强引用     new 不会回收，宁愿抛出outOfMemory内存溢出
+软引用     内存溢出前会回收 SoftReference
+弱引用     全部被回收 WeakReference
+虚引用     和引用队列一起使用 可以用来做为对象是否存活的监控

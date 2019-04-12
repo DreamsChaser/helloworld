@@ -1,1 +1,2 @@
-CAS
+AtomicXxx原子类
+将value定义为volatile 然后循环CAS
