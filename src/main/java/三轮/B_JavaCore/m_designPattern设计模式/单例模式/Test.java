@@ -12,6 +12,8 @@ public class Test {
         LazySingle lazySingle2 = LazySingle.getInstance();
         System.out.println(lazySingle1);
         System.out.println(lazySingle2);
-
+        StaticInnerSingle staticInnerSingle1 = StaticInnerSingle.getInstance();
+        StaticInnerSingle staticInnerSingle2 = StaticInnerSingle.getInstance();
+        System.out.println(staticInnerSingle1 == staticInnerSingle2);
     }
 }
