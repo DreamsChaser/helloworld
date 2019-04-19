@@ -1,0 +1,11 @@
+String  key-value
+1、set [key] [value]
+2、get [key]
+3、incr [key] 原子+1
+4、desc [key] 原子-1
+Hash key field value
+1、hset [key] [field] [value]设置一个key的filed对应的值，filed不存在则新增，field存在则修改field对应的值。
+2、hget
+List
+Set
+SortSet

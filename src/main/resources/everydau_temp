@@ -3,4 +3,6 @@
 限流
 分布式网络抖动
 redis kafka 分布式锁 分布式事务
+redis常见问题
 分库分表(末位取余分区)
+工具类 static bean
